@@ -20,3 +20,23 @@
   </div>
 
 </div>
+{% comment %} flex  sm:block justify-between items-center  text-center  {% endcomment %}
+{% comment %} flex-row  sm:block flex px-6 py-6  justify-center items-center {% endcomment %}
+{% comment %} <div class="grid grid-cols-4 gap-4 md:grid-cols-2 lg:grid-cols-4 p-4 bg-gray-100 shadow-md rounded-md">
+      <div class="col-span-2 md:col-span-1 lg:col-span-2 video-container bg-gray-100 p-4 rounded-md shadow-sm h-2/3">
+        Video Livestream
+      </div>
+      <div class="button-controls bg-lavender-300 p-4 rounded-md shadow-sm">
+        Button Controls
+      </div>
+      <div class="data-logs bg-lavender-400 p-4 rounded-md shadow-sm">
+        Data Logs and Messages
+      </div>
+      <div class="timestamp bg-lavender-500 p-4 rounded-md shadow-sm">
+        Timestamp or Calendar Stamp
+      </div>
+    </div> {% endcomment %}
+
+
+
+    admin dashboard

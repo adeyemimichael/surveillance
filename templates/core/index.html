@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     {% tailwind_css %}
     <style>
       .hidden { display: none; }
@@ -38,11 +39,12 @@
               </div>
               <div class="navitems flex  justify-between items-center  ">
                 <ul class="flex flex-row px-6 py-6  justify-center items-center  mr-6 h-10 w-auto  font-bold "> 
-                  <li><a href="#about" class ="p-3  hover:text-blue-900">About</a></li>
+                  {% comment %} <li><a href="#about" class ="p-3  hover:text-blue-900">About</a></li>
                   <li><a href="#" class ="p-3 hover:text-blue-900">Services</a></li>
-                  <li><a href="#" class ="p-3 hover:text-blue-900 mb-4 md:mb-0">Contact</a></li>
-                  <li><a href="{% url 'moderator_login' %}" class ="p-3 hover:text-gray-200  text-white md:h-6 md:w-24  md:mr-8 ml-4 rounded-full px-8 py-2 bg-blue-600 text-center">Login</a></li>
-                </ul>
+                  <li><a href="#" class ="p-3 hover:text-blue-900 mb-4 md:mb-0">Contact</a></li> {% endcomment %}
+                  <li><a href="{% url 'moderator_reg' %}" class ="p-3 hover:text-gray-200 hover:bg-blue-400 text-white md:h-6 md:w-24  md:mr-8 ml-4 rounded-full px-8 py-4 bg-blue-600 text-center">Admin Reg </a></li> 
+                  <li><a href="{% url 'moderator_login' %}" class ="p-3 hover:text-gray-200 hover:bg-blue-400 text-white md:h-6 md:w-24  md:mr-4 ml-2 rounded-full px-8 py-4 bg-blue-600 text-center">Admin Login</a></li>
+               </ul>
        
                 {% comment %} menu for mobile  {% endcomment %}
                 <div class=" m-6  hidden ">
@@ -68,17 +70,17 @@
         </script> {% endcomment %}
 
      <main class="landing-container w-screen gap-4 bg-blue-600 grid grid-cols-1 md:grid-cols-2">
-      <div class="box-1 bg-gray-100 h-auto md:h-screen flex justify-center items-center shadow-lg rounded-r-sm rounded-b-md">
+      <div class="box-1 bg-gray-100 h-auto md:h-screen sm:h-fit flex justify-center items-center shadow-lg rounded-r-sm rounded-b-md">
           <div class="landing-text flex items-center justify-center text-center flex-col p-5 md:p-0">
-              <h1 class="text-[30px] md:text-[50px] font-bold px-4">Survelax, a University of Ilorin CPE Project</h1>
-              <p class="px-4 py-3 text-[18px] md:text-[24px] font-normal leading-6">
-                  Survelax is a web application that allows you to track your workplace and ensure a report of every activity.
+              <h1 data-aos="zoom-in" class=" animate__animated  text-[30px] md:text-[50px] font-bold px-4" style="animation-delay: 2s; animation-duration: 3s; ">Survelax, a University of Ilorin CPE Project</h1>
+              <p class="px-4 py-3 text-[18px] md:text-[24px] font-normal leading-10">
+                  Suvelax is a web application that allows you to track your workplace and ensure a report of every activity.
               </p>
               <div class="mt-4 flex flex-col sm:flex-row justify-center items-center">
-                  <span class="bg-blue-600 text-white shadow-sm rounded-full px-8 py-2 mt-6 cursor-pointer m-6 text-[16px] md:text-[18px] hover:bg-blue-400">
+                  <span class="bg-blue-600 text-white font-bold sm:font-normal shadow-sm rounded-full px-8 py-4 mt-6 cursor-pointer m-6 text-[16px] md:text-[18px] hover:bg-blue-400">
                       <a href="{% url 'visitor_reg' %}">Get Started</a>
                   </span>
-                  <span class="bg-blue-600 text-white shadow-sm rounded-full px-8 py-2 mt-6 cursor-pointer m-6 text-[16px] md:text-[18px] hover:bg-blue-400">
+                  <span class="bg-blue-600 text-white shadow-sm rounded-full px-8 py-4 mt-6 cursor-pointer m-6 text-[16px] md:text-[18px] font-bold sm:font-normal hover:bg-blue-400">
                       <a href="{% url 'visitor_login' %}">Login</a>
                   </span>
               </div>
@@ -95,32 +97,30 @@
 
 
       {% comment %} About section  {% endcomment %}
-
-     
   </main>
-  <section id="about" class="bg-slate-300">
-    <h1> About us </h1>
-    <div class="grid grid-cols-4 gap-4 md:grid-cols-2 lg:grid-cols-4 p-4 bg-lavender-100 shadow-md rounded-md">
-      <div class="col-span-2 md:col-span-1 lg:col-span-2 video-container bg-lavender-200 p-4 rounded-md shadow-sm">
-        Video Livestream
+  <section id="about" class="bg-white h-screen sm:h-full ">
+   
+    {% comment %} div for the about section start here  {% endcomment %}
+    <h1 data-aos="fade-up"  class=" font-bold  text-center text-5xl mt-10" style="animation-delay: 2s; animation-duration: 3s;  margin-top:28px;">  About Us  </h1>
+    <div class=" w-screen h-fit flex flex-row ">
+      <div data-aos="zoom-in"  class="h-100% w-screen  animate__animated font-bold  text-center text-5xl mt-10" style="animation-delay: 2s; animation-duration: 4s;  margin-top:28px;"> 
+        <div class="relative z-10">
+          <img src="{% static 'images/surve.jpeg' %}" alt="Image 1" class="w-full rounded-2xl shadow-lg ml-6">
+        </div>
+      
+      
       </div>
-      <div class="button-controls bg-lavender-300 p-4 rounded-md shadow-sm">
-        Button Controls
-      </div>
-      <div class="data-logs bg-lavender-400 p-4 rounded-md shadow-sm">
-        Data Logs and Messages
-      </div>
-      <div class="timestamp bg-lavender-500 p-4 rounded-md shadow-sm">
-        Timestamp or Calendar Stamp
-      </div>
+      <div data-aos="zoom-out"  class=" h-48 w-screen animate__animated   text-center mt-10" style="animation-delay: 5s; animation-duration: 4s;  margin-top:28px;"> 
+       <p class="text-right flex items-start text-wrap  leading-10 mx-6 my-6 px-6 py-6" style=" font-size:20px;" > Welcome to our state-of-the-art Surveillance System,an advanced solution designed for optimal security and monitoring.Developed as a final year project under the guidance of Prof. J.A. Opadiji,this system integrates cutting-edge technology to offer remote control and monitoring through a seamless web application. Built with Django, HTML,tailwind CSS, and JavaScript, it allows you to manage your surveillance setup from anywhere.Featuring real-time video livestreams, intuitive button controls for adjusting camera angles and recordings,comprehensive data logs, and precise timestamps, our system ensures you are always aware and in control of your premises.Experience reliable and efficient security with our innovative Surveillance System.</p>
     </div>
-    
+
+  
     
           </section>
     </section>
   </div>
- 
-
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
-{% comment %} flex  sm:block justify-between items-center  text-center  {% endcomment %}
-{% comment %} flex-row  sm:block flex px-6 py-6  justify-center items-center {% endcomment %}
