@@ -1,5 +1,5 @@
 {% load static %}
-{% load static tailwind_tags %}
+{% comment %} {% load static tailwind_tags %} {% endcomment %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,83 +10,286 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-    {% tailwind_css %}
+    {% comment %} {% tailwind_css %} {% endcomment %}
     <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+      }
       .hidden { display: none; }
       .block { display: block; }
-  </style>
+      .container { max-width: fit-content; }
+
+      nav {
+        display: flex;
+        background-color: #f8fafc;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        align-items: center;
+        justify-content: space-between;
+        height: auto;
+        width: 100%;
+      }
+      .logo-container {
+        text-align: center;
+        padding: 16px 24px;
+      }
+      .logo-container h1 {
+        font-size: 30px;
+        font-weight: bold;
+        color: ;
+        letter-spacing: 0.5px;
+      }
+      /* Mobile responsiveness */
+      @media (max-width: 768px) {
+        .logo-container {
+          padding: 12px 16px; /* Adjust padding for smaller screens */
+        }
+      
+        .logo-container h1 {
+          font-size: 24px; /* Decrease font size for smaller screens */
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .logo-container {
+          padding: 8px 12px; /* Further adjust padding for very small screens */
+        }
+      
+        .logo-container h1 {
+          font-size: 20px; /* Further decrease font size for very small screens */
+        }
+      }
+
+      .navitems {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .navitems ul {
+        display: flex;
+        flex-direction: row;
+        padding: 24px;
+        justify-content: center;
+        align-items: center;
+        margin-right: 24px;
+        height: 40px;
+        width: auto;
+        font-weight: bold;
+
+        list-style-type: none;
+      }
+      .navitems ul li a {
+        padding: 16px;
+        text-decoration: none;
+        color:white;
+        background-color: blue;
+        border-radius: 30px;
+      display: inline-block;
+      justify:space-around;
+     
+      }
+      .btn-1{
+        margin-left:10px;
+        margin-right:20px;
+      }
+      .navitems ul li a:hover {
+        color: #fff;
+        background-color: #1E90FF;
+      }
+   
+      .landing-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        background-color: #1e40af;
+      }
+      @media (min-width: 768px) {
+        .landing-container {
+          grid-template-columns: 1fr 1fr;
+        }
+       
+
+      }
+      .box-1 {
+        background-color: #f1f5f9;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+      @media (min-width: 768px) {
+        .box-1 {
+          height: 100vh;
+          border-radius: 4px;
+        }
+      }
+      .landing-text {
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+        text-align: center;
+        flex-direction: column;
+        padding: 1px;
+      }
+      @media (min-width: 768px) {
+        .landing-text {
+          padding: 0;
+        }
+      }
+      .landing-text h1 {
+        font-size: 30px;
+        padding: 8px;
+        font-weight: bold;
+        animation-delay: 2s;
+        animation-duration: 3s;
+      }
+      @media (min-width: 768px) {
+        .landing-text h1 {
+          font-size: 50px;
+        }
+      }
+      .landing-text p {
+        padding: 12px;
+        font-size: 18px;
+        font-weight: normal;
+        
+      }
+      @media (min-width: 768px) {
+        .landing-text p {
+          font-size: 24px;
+        }
+      }
+      .landing-text .cta-button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom:16px;
+      }
+      .landing-text .cta-button a {
+        background-color: #1e40af;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border-radius: 99px;
+        padding: 12px 32px;
+        margin: 24px;
+        font-size: 16px;
+        text-decoration: none;
+      }
+      @media (min-width: 768px) {
+        .landing-text .cta-button a {
+          font-size: 18px;
+        }
+      }
+      .landing-text .cta-button a:hover {
+        background-color: #3b82f6;
+      }
+      .box-2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 20px;
+        
+      }
+      @media (min-width: 768px) {
+        .box-2 {
+          padding-top: 0;
+          display: inline-block;
+        }
+      }
+      .about-section {
+        background-color: white;
+        height: 100vh;
+      }
+      @media (min-width: 640px) {
+        .about-section {
+          height: auto;
+        }
+      }
+      .about-title {
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 28px;
+        animation-delay: 2s;
+        animation-duration: 3s;
+      }
+      .about-container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: auto;
+      }
+      .about-image {
+        width: 100%;
+        border-radius: 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        margin-left: 24px;
+      }
+      .about-text {
+        text-align: right;
+        display: flex;
+        align-items: start;
+        flex-wrap: wrap;
+        line-height: 40px;
+        margin: 24px;
+        padding: 24px;
+        font-size: 20px;
+      }
+      button{
+        
+      }
+    </style>
 </head>
 <body>
   <div class="container  max-w-fit" >
 
     {% comment %} this is the first section for the landing page  {% endcomment %}
     <section class="  ">
-        <nav class="flex  bg-slate-100 shadow-sm   items-center justify-between  sm:h-auto md:h-28 w-screen ">
-            <div class="logo-container  text-center  px-6 py-4">
-          <svg data-v-423bf9ae="" xmlns="http://www.w3.org/2000/svg" 
-          viewBox="0 0 404 90" class="iconLeft fill-current w-auto h-10" ><!----><!----><!---->
-          <g data-v-423bf9ae="" id="0587cefe-1626-49c3-9862-b99936c16411" fill="#000000" transform="matrix(5.741626899055351,0,0,5.741626899055351,109.6297589728666,-6.244019085031169)">
-            <path d="M0.29 13.10C1.04 13.78 2.20 14.14 3.29 14.14C4.79 14.14 6.15 13.45 6.15 11.93C6.16 9.23 2.20 9.97 2.20 8.60C2.20 8.06 2.66 7.85 3.29 7.85C3.95 7.85 4.77 8.11 5.43 8.51L6.02 7.32C5.35 6.85 4.35 6.57 3.42 6.57C1.99 6.57 0.67 7.21 0.67 8.72C0.66 11.41 4.58 10.56 4.58 12.08C4.58 12.64 4.05 12.88 3.36 
-            12.88C2.55 12.88 1.51 12.53 0.87 11.96ZM7.53 11.27C7.53 13.05 8.55 14.14 10.26 14.14C11.48 14.13 12.42 13.66 12.92 
-            12.63L12.92 14.08L14.53 14.08L14.53 6.64L12.92 6.64L12.92 10.30C12.92 11.61 12.17 12.60 10.88 12.63C9.80 12.63 9.14 
-            11.94 9.14 10.82L9.14 6.64L7.53 6.64ZM15.74 6.64L18.62 14.08L20.29 14.08L23.14 6.64L21.53 6.64L19.49 12.50L17.42 6.64ZM23.56 10.37C23.56 12.61 25.07 14.14 27.37 14.14C28.66 14.14 29.72 13.68 30.45 12.88L29.60 11.97C29.05 12.53 28.31 12.84 27.50 12.84C26.32 12.84 25.44 12.12 25.19 10.98L30.81 
-            10.98C31.01 8.29 29.95 6.58 27.33 6.58C25.12 6.59 23.56 8.12 23.56 10.37ZM25.16 9.80C25.34 8.61 26.17 7.87 27.34 7.87C28.56 7.87 29.36 8.60 29.41 9.80ZM32.56 14.08L34.17 14.08L34.17 3.70L32.56 3.70ZM36.01 11.84C36.01 13.16 37.02 14.15 38.63 14.15C39.70 14.15 40.56 13.83 41.09 13.17L41.09 14.08L42.67 14.08L42.66 9.20C42.64 7.56 41.57 6.58 39.65 6.58C38.23 6.58 37.48 6.90 36.44 7.52L37.10 8.64C37.84 8.13 38.58 7.88 39.30 7.88C40.47 7.88 41.08 8.44 41.08 9.38L41.08 9.60L38.82 9.60C37.03 9.62 36.01 10.49 36.01 11.84ZM37.52 11.77C37.52 11.06 38.01 10.78 39.06 10.78L41.08 10.78L41.08 11.47C40.99 12.28 40.11 12.88 38.96 12.88C38.07 12.88 37.52 12.45 37.52 11.77ZM43.83 14.08L45.63 14.08L47.53 11.35L49.31 14.08L51.16 14.08L48.59 10.26L50.99 6.64L49.22 6.64L47.53 9.18L45.86 6.64L44.02 6.64L46.47 10.26Z"></path></g><defs data-v-423bf9ae=""><linearGradient data-v-423bf9ae="" 
-              gradientTransform="rotate(25)" id="8be094d5-90a1-47b7-9b49-c107eb0c60c7" x1="0%" y1="0%" x2="100%" y2="0%"><stop data-v-423bf9ae="" offset="0%" 
-              style="stop-color: rgb(40, 139, 88); stop-opacity: 1;"></stop>
-              <stop data-v-423bf9ae="" offset="100%" style="stop-color: rgb(21, 34, 241); stop-opacity: 1;"></stop>
-            </linearGradient></defs><g data-v-423bf9ae="" id="7895d473-d1c4-40d2-89c5-9c4abdfbc911" transform="matrix(2.852072528086791,0,0,2.852072528086791,0.3618419448213217,-0.41116010653409063)" stroke="none" fill="url(#8be094d5-90a1-47b7-9b49-c107eb0c60c7)">
-              <path d="M16 23.787L8.102 16 16 8.213 23.898 16 16 23.787zM9.525 16L16 22.383 22.475 16 16 9.617 9.525 16z"></path><path d="M15.915 31.778L-.005 16.084 16.085.222l15.92 15.694-16.09 15.862zM1.419 16.084l14.496 14.29 14.666-14.458-14.496-14.29L1.419 16.084z"></path><path d="M15.5.924h1v30.152h-1z"></path></g><!----></svg>
+        <nav class=" ">
+            <div class="logo-container">
+              <h1 class="text-3xl">Surveillance</h1>
               </div>
-              <div class="navitems flex  justify-between items-center  ">
-                <ul class="flex flex-row px-6 py-6  justify-center items-center  mr-6 h-10 w-auto  font-bold "> 
-                  {% comment %} <li><a href="#about" class ="p-3  hover:text-blue-900">About</a></li>
-                  <li><a href="#" class ="p-3 hover:text-blue-900">Services</a></li>
-                  <li><a href="#" class ="p-3 hover:text-blue-900 mb-4 md:mb-0">Contact</a></li> {% endcomment %}
-                  <li><a href="{% url 'moderator_reg' %}" class ="p-3 hover:text-gray-200 hover:bg-blue-400 text-white md:h-6 md:w-24  md:mr-8 ml-4 rounded-full px-8 py-4 bg-blue-600 text-center">Admin Reg </a></li> 
+
+              <div class="navitems  ">
+                <ul class=""> 
+                  <li><a href="{% url 'moderator_reg' %}" class =" btn-1 p-3 hover:text-gray-200 hover:bg-blue-400 text-white md:h-6 md:w-24  md:mr-8 ml-4 rounded-full px-8 py-4 bg-blue-600 text-center">Admin Reg </a></li> 
                   <li><a href="{% url 'moderator_login' %}" class ="p-3 hover:text-gray-200 hover:bg-blue-400 text-white md:h-6 md:w-24  md:mr-4 ml-2 rounded-full px-8 py-4 bg-blue-600 text-center">Admin Login</a></li>
                </ul>
        
                 {% comment %} menu for mobile  {% endcomment %}
                 <div class=" m-6  hidden ">
-                <button class="focus:text-blue-700 hover:text-blue-500 px-6 py-4 ">
-                <svg class="h-6 w-6  fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M16 132h416c8.8 0 16-7.2 16-16V76c0-8.8-7.2-16-16-16H16C7.2 60 0 67.2 
-                  0 76v40c0 8.8 7.2 16 16 16zm0 160h416c8.8 0 16-7.2 16-16v-40c0-8.8-7.2-16-16-16H16c-8.8 0-16 7.2-16 16v40c0 8.8 7.2 16 16 16zm0 160h416c8.8 0 16-7.2 16-16v-40c0-8.8-7.2-16-16-16H16c-8.8 0-16 7.2-16 16v40c0 8.8 7.2 16 16 16z"/></svg>
-                </button>
+               
               </div>
       
       
                 </div>
            </nav> 
         
-        {% comment %} <script>
-            function toggleMenu() {
-                var menu = document.getElementById("mobile-menu");
-                if (menu.style.display === "block") {
-                    menu.style.display = "flex";
-                } else {
-                    menu.style.display = "block";
-                }
-            }
-        </script> {% endcomment %}
+   {% comment %} main page  {% endcomment %}
 
-     <main class="landing-container w-screen gap-4 bg-blue-600 grid grid-cols-1 md:grid-cols-2">
-      <div class="box-1 bg-gray-100 h-auto md:h-screen sm:h-fit flex justify-center items-center shadow-lg rounded-r-sm rounded-b-md">
-          <div class="landing-text flex items-center justify-center text-center flex-col p-5 md:p-0">
-              <h1 data-aos="zoom-in" class=" animate__animated  text-[30px] md:text-[50px] font-bold px-4" style="animation-delay: 2s; animation-duration: 3s; ">Survelax, a University of Ilorin CPE Project</h1>
-              <p class="px-4 py-3 text-[18px] md:text-[24px] font-normal leading-10">
-                  Suvelax is a web application that allows you to track your workplace and ensure a report of every activity.
+     <main class="landing-container ">
+      <div class="box-1">
+          <div class="landing-text ">
+              <h1 data-aos="zoom-in" class=" animate__animated" style="animation-delay: 2s; animation-duration: 3s; ">Surveillance, a University of Ilorin CPE Project</h1>
+              <p class="">
+                  Surveillance is a web application that allows you to track your workplace and ensure a report of every activity.
               </p>
-              <div class="mt-4 flex flex-col sm:flex-row justify-center items-center">
-                  <span class="bg-blue-600 text-white font-bold sm:font-normal shadow-sm rounded-full px-8 py-4 mt-6 cursor-pointer m-6 text-[16px] md:text-[18px] hover:bg-blue-400">
-                      <a href="{% url 'visitor_reg' %}">Get Started</a>
+              <div class="cta-button">
+                  <span class="">
+                      <a href="{% url 'visitor_reg' %}" class="">Get Started</a>
                   </span>
-                  <span class="bg-blue-600 text-white shadow-sm rounded-full px-8 py-4 mt-6 cursor-pointer m-6 text-[16px] md:text-[18px] font-bold sm:font-normal hover:bg-blue-400">
+                  <span class="">
                       <a href="{% url 'visitor_login' %}">Login</a>
                   </span>
               </div>
           </div>
       </div>
-      <div class="box-2 flex justify-center items-center pt-5 md:pt-0">
+      <div class="box-2 ">
           <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
           <dotlottie-player src="https://lottie.host/9eda9868-11fc-4dd9-9b9d-edc6d504391e/HtUw0cR04o.json" background="transparent" speed="0.5" style="width: 100%; height: auto; padding: 6px" loop autoplay control></dotlottie-player>
       </div>
@@ -96,12 +299,13 @@
       </div>
 
 
-      {% comment %} About section  {% endcomment %}
+     
   </main>
+{% comment %}   
   <section id="about" class="bg-white h-screen sm:h-full ">
    
     {% comment %} div for the about section start here  {% endcomment %}
-    <h1 data-aos="fade-up"  class=" font-bold  text-center text-5xl mt-10" style="animation-delay: 2s; animation-duration: 3s;  margin-top:28px;">  About Us  </h1>
+    {% comment %} <h1 data-aos="fade-up"  class=" font-bold  text-center text-5xl mt-10" style="animation-delay: 2s; animation-duration: 3s;  margin-top:28px;">  About Us  </h1>
     <div class=" w-screen h-fit flex flex-row ">
       <div data-aos="zoom-in"  class="h-100% w-screen  animate__animated font-bold  text-center text-5xl mt-10" style="animation-delay: 2s; animation-duration: 4s;  margin-top:28px;"> 
         <div class="relative z-10">
@@ -116,7 +320,7 @@
 
   
     
-          </section>
+          </section> {% endcomment %} 
     </section>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
