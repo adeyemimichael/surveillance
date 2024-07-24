@@ -7,22 +7,117 @@
     <title>ADMIN DASHBOARD</title>
    
     <style>
-     
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .admin-dashboard {
+            display: flex;
+            margin-right:40px;
+        }
+
+        .admin-dashboard-hero {
+            display: flex;
+            flex-direction: column;
+            width: 220px;
+            background-color: #e3f2fd; /* Softer white color */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            justify-content:space-evenly;
+        }
+
+        .admin-dashboard-hero p {
+            margin: 18px 0;
+            color: black;
+        }
+
+        .admin-dashboard-hero a {
+            color: black;
+            text-decoration: none;
+            margin-top: 40px;
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background-color: #d9e2ac; /* Softer blue color */
+            border-radius: 5px;
+        }
+
+        .admin-dashboard-hero a:hover {
+            background-color: #bcccdc; /* Slightly darker blue */
+        }
+
+        .container-div-hero {
+            margin-left:270px; /* Space between sidebar and main content */
+            padding: 20px;
+            flex: 1;
+        }
+
+        .video-stream, .past-recordings, .visitors {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-stream h1, .video-stream h2, .past-recordings h2, .visitors h2 {
+            color: #334e68; /* Darker text color */
+        }
+
+        @media (max-width: 768px) {
+            .admin-dashboard {
+                flex-direction: column;
+            }
+
+            .admin-dashboard-hero {
+                flex-direction: row;
+                width: 100%;
+                height: auto;
+                position: static;
+            }
+
+            .admin-dashboard-hero a {
+                margin-top: 0;
+                margin-left: 20px;
+                padding: 10px 20px;
+            }
+
+            .container-div-hero {
+                margin-left: 0;
+            }
+        } 
+    </style>
     </style>
 </head>
 <body>
 {% if is_moderator %}
-    <h1 class="text-center font-bold head-tag p-96">Admin Dashboard</h1>
-    <h2>welcome {{user.username}}</h2>
-    <h2>welcome {{voter.user.username}}</h2>
+<div class="admin-dashboard">
+    <div class="admin-dashboard-hero">
+    <p class="">Admin Dashboard</h1>
+    <p>welcome {{user.username}}</h2>
+   
     <a href="{% url 'moderator_logout' %}">Logout</a>
-    <h1>VIDEO LIVE STREAM</h1>
-    <div>
+</div>
+<div class="container-div-hero">
+    <div class="video-stream">
+    <h1>Video Live stream </h1>
+    
         <h2>Camera Stream</h2>
         <img src="{% url 'webcam' %}" width="640" height="480" alt="feeds">
     </div>
-    <div>
-        <h2>Past Recordings</h2>
+    
+
+      
+    <div class="past-recordings">
+       <div><h2>Past Recordings</h2>
+        
         <ul>
             {% for recording in recordings %}
                 <li>
@@ -30,7 +125,14 @@
                 </li>
             {% endfor %}
         </ul>
+    </div> 
+    <div class="button-control">
+       <h2> Control Panel Settings</h2>
     </div>
+    </div>
+
+
+    <div class="visitors">
     <ul>
         {% for visitors in visitor %}
         <li>
@@ -54,10 +156,17 @@
         </li>
         {% endfor %}
     </ul>
+</div>
+</div>
+</div>
 {% else %}
+<div class="unauthorized">
     <h1>You are not authorized to view this page</h1>
     <a href="{% url 'index' %}">Back to Homepage</a>
-    <div class="text-center h-4/6"><a href="{% url '  Dashboard   ' %}">Dashboard</a></div>   <div>
+    <div class="text-center h-4/6"><a href="{% url '  Dashboard   ' %}">Dashboard</a></div>   
+
+</div>
+
 {% endif %}
 </body>
 </html>

@@ -87,3 +87,74 @@
               <svg class="h-6 w-6  fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M16 132h416c8.8 0 16-7.2 16-16V76c0-8.8-7.2-16-16-16H16C7.2 60 0 67.2 
                 0 76v40c0 8.8 7.2 16 16 16zm0 160h416c8.8 0 16-7.2 16-16v-40c0-8.8-7.2-16-16-16H16c-8.8 0-16 7.2-16 16v40c0 8.8 7.2 16 16 16zm0 160h416c8.8 0 16-7.2 16-16v-40c0-8.8-7.2-16-16-16H16c-8.8 0-16 7.2-16 16v40c0 8.8 7.2 16 16 16z"/></svg>
               </button>
+
+
+              <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADMIN DASHBOARD</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+{% if is_moderator %}
+    <div class="admin-dashboard">
+        <h1 class="text-center font-bold head-tag p-96">Admin Dashboard</h1>
+        <h2>Welcome, {{ user.username }}</h2>
+        <h2>Welcome, {{ voter.user.username }}</h2>
+        <a href="{% url 'moderator_logout' %}">Logout</a>
+        
+        <div class="video-stream">
+            <h1>VIDEO LIVE STREAM</h1>
+            <div>
+                <h2>Camera Stream</h2>
+                <img src="{% url 'webcam' %}" width="640" height="480" alt="feeds">
+            </div>
+        </div>
+        
+        <div class="past-recordings">
+            <h2>Past Recordings</h2>
+            <ul>
+                {% for recording in recordings %}
+                    <li>
+                        <a href="{% url 'play_recording' recording.id %}">{{ recording.timestamp }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="visitors">
+            <h2>Visitor Authorization</h2>
+            <ul>
+                {% for visitor in visitors %}
+                    <li>
+                        <p>{{ visitor.user.username }} is 
+                            {% if visitor.is_authorized %}
+                                authorized
+                            {% else %}
+                                unauthorized
+                            {% endif %}
+                        </p>
+                        <form action="{% url 'authorize' visitor.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit">Authorize</button>
+                        </form>
+                        <form action="{% url 'unauthorize' visitor.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit">Unauthorize</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% else %}
+    <div class="unauthorized">
+        <h1>You are not authorized to view this page</h1>
+        <a href="{% url 'index' %}">Back to Homepage</a>
+    </div>
+{% endif %}
+</body>
+</html>
