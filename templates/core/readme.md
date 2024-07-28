@@ -103,8 +103,8 @@
     <div class="admin-dashboard">
         <h1 class="text-center font-bold head-tag p-96">Admin Dashboard</h1>
         <h2>Welcome, {{ user.username }}</h2>
-        <h2>Welcome, {{ voter.user.username }}</h2>
-        <a href="{% url 'moderator_logout' %}">Logout</a>
+        {% comment %} <h2>Welcome, {{ voter.user.username }}</h2> {% endcomment %}
+        
         
         <div class="video-stream">
             <h1>VIDEO LIVE STREAM</h1>
@@ -158,3 +158,28 @@
 {% endif %}
 </body>
 </html>
+
+
+{% for visitor in visitors %}
+<div class="header-1">
+  <h1>hello world</h1>
+  <p>{{ visitor.user.username }} is  
+      {% if visitor.is_authorized %}
+          authorized
+      {% else %}
+          unauthorized now 
+          {% endif %}
+  </p>
+  <div class=" action-button">
+      <form action="{% url 'authorize' visitor.id %}" method="POST">
+          {% csrf_token %}
+          <button type="submit">Approve </button>
+       </form>
+       <form action="{% url 'unauthorize' visitor.id %}" method="POST">
+          {% csrf_token %}
+          <button type="submit">Unauthorize</button>
+      </form>
+     </div>
+
+  </div>
+  {% endfor %} 
