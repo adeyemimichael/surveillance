@@ -141,11 +141,11 @@
             flex-direction:row;
           
         }
-        .buttton-one, .buttton-two{
+        .button-one, .button-two{
             padding:20px;
             margin:10px;
         }
-        .buttton-one .controls-wrap button {
+        .button-one .controls-wrap button {
             background-color: #d9e2ec;
             border:none;
             border-radius: 7px;
@@ -153,8 +153,8 @@
             margin: 2px;
             cursor: pointer;  
         }
-        .buttton-one .controls-wrap button: hover { 
-            background-color: #d9e2;
+        .button-one .controls-wrap button: hover { 
+            background-color:lightblue;
         }
 
         #video-header{
@@ -224,7 +224,30 @@
    <header class="auth-container">
     
   <h1 id="users-id"> Guest  Authentication </h1>
-
+  <div class="visitors">
+    <h2>Visitor Authorization</h2>
+    <ul>
+        {% for visitor in visitors %}
+            <li>
+                <p>{{ visitor.user.username }} is 
+                    {% if visitor.is_authorized %}
+                        authorized
+                    {% else %}
+                        unauthorized
+                    {% endif %}
+                </p>
+                <form action="{% url 'authorize' visitor.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit">Authorize</button>
+                </form>
+                <form action="{% url 'unauthorize' visitor.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit">Unauthorize</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
  </header>
 
 
@@ -240,7 +263,7 @@
 
  {% comment %} button controls  {% endcomment %}
  <section class=" button-controls-container">
-     <div class=" buttton-one"> 
+     <div class=" button-one"> 
            <p>Alarm Control</p>
            <div class=" controls-wrap">
           <button type="button" > On </button>
