@@ -91,9 +91,12 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
 }
 .video-stream-container #image-strem{
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .unauthorized a{
@@ -101,32 +104,10 @@
     color: #fff;
     background-color: #d9e2ac;
 }
-.visitors ul {
-    display :flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-direction:column;
-    margin:10px 0;
 
-}
-.visitors button{
-    padding: 10px;
-    background-color: #d9e2ec;
-    text-align: center;
-    text-decoration: none;
-    list-style-type: none;
-    margin-left:20px;
-    cursor:pointer;
-    border-radius: 10px;
-    border: none;
-}
-.visitors li{
-    display: flex;
-
-}
         .video-stream, .recordings-section, .past-recordings, 
-        .past-recordings, .button-controls-container ,
-         .auth-container , .buttton-one , .buttton-two {
+        .past-recordings, .button-controls-container,
+         .auth-container, .buttton-one, .sms-log, .past-recordings, .buttton-two {
             background-color: white; 
             padding:16px;
             margin-bottom: 20px;
@@ -141,11 +122,16 @@
             flex-direction:row;
           
         }
-        .button-one, .button-two{
+        .buttton-one{
             padding:20px;
-            margin:10px;
+            margin:14px;
         }
-        .button-one .controls-wrap button {
+        .buttton-two{
+            padding:20px;
+            margin:14px; 
+        }
+        
+         .buttton-two button  {
             background-color: #d9e2ec;
             border:none;
             border-radius: 7px;
@@ -153,17 +139,69 @@
             margin: 2px;
             cursor: pointer;  
         }
-        .button-one .controls-wrap button: hover { 
+        .buttton-one button {
+            padding:12px 17px ;
+            margin: 2px;
+            background-color: #d9e2ec;
+            border:none;
+            border-radius: 7px;
+            cursor: pointer;  
+        }
+        .buttton-two button:hover { 
             background-color:lightblue;
+        }
+        .buttton-one button:hover {
+            background-color:lightblue;
+        }
+        .buttton-one, .buttton-two p{
+            color:black;
+            text-align: center;
+            font-weight:bold;
+
         }
 
         #video-header{
-            font-sze: 24px;
+            font-sze: 20px;
             margin-top:2px !important;
         }
-
-       
-
+.recordings-section{
+    display:flex;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items: center;
+}
+    .sms-log{
+        padding: 10px;
+        margin : 10px;
+        width:300px !important;
+        border-radius: 5px;
+        height:300px;
+        text-align: center;
+    }
+    .sms-log p{
+      
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .past-recordings {
+        padding: 10px;
+        margin : 10px;
+        height:300px ;
+        width:250px !important;
+        border-radius: 5px;
+    
+        text-align: center !important;
+    }
+    .past-recordings p{
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .past-recordings img{
+        height: 100px;
+        width: 100px;
+        margin: 5px;
+    }
         @media (max-width: 768px) {
             .admin-dashboard {
                 flex-direction: column;
@@ -224,30 +262,7 @@
    <header class="auth-container">
     
   <h1 id="users-id"> Guest  Authentication </h1>
-  <div class="visitors">
-    <h2>Visitor Authorization</h2>
-    <ul>
-        {% for visitor in visitors %}
-            <li>
-                <p>{{ visitor.user.username }} is 
-                    {% if visitor.is_authorized %}
-                        authorized
-                    {% else %}
-                        unauthorized
-                    {% endif %}
-                </p>
-                <form action="{% url 'authorize' visitor.id %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit">Authorize</button>
-                </form>
-                <form action="{% url 'unauthorize' visitor.id %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit">Unauthorize</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
-</div>
+
  </header>
 
 
@@ -263,7 +278,7 @@
 
  {% comment %} button controls  {% endcomment %}
  <section class=" button-controls-container">
-     <div class=" button-one"> 
+     <div class="buttton-one"> 
            <p>Alarm Control</p>
            <div class=" controls-wrap">
           <button type="button" > On </button>
@@ -271,7 +286,7 @@
         </div>
      
     </div>
-         <div class=" buttton-two"> 
+         <div class="buttton-two"> 
             <p>Floodlight Control</p>
             <div class=" controls-wrap">
                <button type="button" > On </button>
@@ -285,18 +300,21 @@
     <section class="recordings-section">
 
         <div class="sms-log"> 
-            <h2>SMS Module log  </h2>
+            <p> SMS logs </p>
             <div>
-                <p> A Threat has been detected and a call  has been placed to  </p>
+                {% comment %} <p> A Threat has been detected and a call  has been placed to  </p> {% endcomment %}
             </div>
         </div>
 
 
         <div class ="past-recordings">
-
+      <p> Past Recordings and Footages </p> 
         <select>
         <option value="true" selected>true</option>
-
+        <option value="true" selected>true</option>
+        <option value="true" selected>true</option>
+        <option value="true" selected>true</option>
+        <option value="true" selected>true</option>
           </select>
 
 

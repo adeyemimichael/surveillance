@@ -183,3 +183,29 @@
 
   </div>
   {% endfor %} 
+
+
+
+  .visitors ul {
+    display :flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-direction:column;
+    margin:10px 0;
+
+}
+.visitors button{
+    padding: 10px;
+    background-color: #d9e2ec;
+    text-align: center;
+    text-decoration: none;
+    list-style-type: none;
+    margin-left:20px;
+    cursor:pointer;
+    border-radius: 10px;
+    border: none;
+}
+.visitors li{
+    display: flex;
+
+}
