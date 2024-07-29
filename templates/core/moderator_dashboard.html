@@ -259,11 +259,33 @@
  {% if is_moderator %}
  <div class="moderator">
 
-   <header class="auth-container">
-    
-  <h1 id="users-id"> Guest  Authentication </h1>
-
- </header>
+    <header class="auth-container">
+        <h1 id="users-id">Guest Authentication</h1>
+        <div class="button-controls-container">
+          <div class="buttton-one">
+            <p>{{ visitor.user.username }}  Lokoloko is 
+                {% if visitor.is_authorized %}
+                    authorized
+                {% else %}
+                    unauthorized
+                {% endif %}
+            </p>
+            <button id="authorize-btn">Authorize</button>
+            <button id="unauthorize-btn">Unauthorize</button>
+          </div>
+          <div class="buttton-two">
+            <p>{{ visitor.user.username }} Femi is 
+                {% if visitor.is_authorized %}
+                    
+                {% else %}
+                authorized
+                {% endif %}
+            </p>
+            <button id="unauthorize-btn">Authorize</button>
+            <button id="unauthorize-btn">Unauthorize</button>
+          </div>
+        </div>
+      </header>
 
 
  {% comment %} video streaming section {% endcomment %}
