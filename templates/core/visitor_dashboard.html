@@ -8,23 +8,24 @@
   <link rel="stylesheet" href="{% static 'styles/moderator_login.css' %}">
 </head>
 <body>
-  <div class="guest">
-    <h1>Guest Dashboard </h1>
-    <h2>welcome {{user.username}}</h2>
-    <a href="{% url 'visitor_logout' %}">Logout</a>
-    <h1>VIDEO LIVE STREAM</h1>
-      <div>
-        <h2>Camera Stream</h2>
-        <img src="{% url 'webcam' %}" width="640" height="480" alt="feeds">
-      </div>
-  </div>
+
+  <section class="main-container">
+  <div class="admin-dashboard-container">
+    <h2 id="hero-header">
+        Admin Dashboard 
+    </h2>
+  <p>Welcome, {{ user.username }}</p>
+  <a href="{% url 'moderator_logout' %}">Logout</a> 
+ </div>
+  <div class="video-stream">
+    <h1 id="video-header">Video Live stream </h1>
+    <div class="video-stream-container" id="video-stream-container">
+   <img src="{% url 'webcam' %}" width="320" height="240" alt="feeds" class ="image-stream"  >
+   <img src="{% url 'webcam' %}" width="320" height="240" alt="feeds" class ="image-stream">
+     </div>
+  
+</div>
+</section>
 </body>
-<!--
-  <body>
-    <div class="guest">
-      <h1>You must log in first to view this page</h1>
-      <a href="{% url 'index' %}">Back to Homepage</a>
-    </div>
-  </body>
- -->
+
 </html>
