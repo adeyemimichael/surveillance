@@ -209,3 +209,17 @@
     display: flex;
 
 }
+
+
+<div class="video-stream">
+  <h1 id="video-header">Video Live stream </h1>
+  <div class="recordings-section" id="video-stream-container">
+    <div class="video-stream">
+ <img src="{% url 'webcam' %}"  alt="feeds" class ="image-stream"  >
+</div>
+ <div class="video-stream">
+ <img src="{% url 'webcam' %}"  alt="feeds" class ="image-stream">
+</div>
+</div>
+
+</div>
